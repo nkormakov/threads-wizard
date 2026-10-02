@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metric thread sizes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Metric thread sizes</h1>
+  <p class="lede">ISO metric threads (M profile). Tick the sizes you care about, then compare them side by side.</p>
+
+  <div class="toolbar">
+    <div class="filters" role="group" aria-label="Series filter">
+      <label><input type="radio" name="series" value="all" checked> All</label>
+      <label><input type="radio" name="series" value="coarse"> Coarse</label>
+      <label><input type="radio" name="series" value="fine"> Fine</label>
+    </div>
+    <div class="actions">
+      <span id="count" aria-live="polite">0 selected</span>
+      <button id="clear" type="button" disabled>Clear selection</button>
+      <button id="compare" type="button" class="primary" disabled>Compare selected</button>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table id="threads">
+      <thead>
+        <tr>
+          <th><span class="sr">Select</span></th>
+          <th>Thread</th>
+          <th class="num">Pitch (mm)</th>
+          <th class="num">Outer Ø (mm)</th>
+          <th class="num">Inner Ø, bolt (mm)</th>
+          <th class="num">Inner Ø, nut (mm)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <p class="notes">
+    Outer Ø is the nominal (major) diameter. Inner Ø, bolt is the external thread minor diameter
+    d<sub>3</sub> = d − 1.22687·P. Inner Ø, nut is the internal thread minor diameter
+    D<sub>1</sub> = d − 1.08253·P. Values are calculated from the basic ISO 68-1 profile and rounded to 3 decimals.
+  </p>
+</main>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
