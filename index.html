@@ -3,19 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Metric thread sizes</title>
+<title>Thread sizes</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
-  <h1>Metric thread sizes</h1>
-  <p class="lede">ISO metric threads (M profile). Tick the sizes you care about, then compare them side by side.</p>
+  <h1>Thread sizes</h1>
+  <p class="lede">ISO metric (M) and Unified inch (UNC/UNF) threads. Tick the sizes you care about, then compare them side by side.</p>
 
   <div class="toolbar">
-    <div class="filters" role="group" aria-label="Series filter">
-      <label><input type="radio" name="series" value="all" checked> All</label>
-      <label><input type="radio" name="series" value="coarse"> Coarse</label>
-      <label><input type="radio" name="series" value="fine"> Fine</label>
+    <div class="controls">
+      <div class="seg" role="radiogroup" aria-label="Thread system">
+        <label><input type="radio" name="system" value="metric" checked><span>Metric</span></label>
+        <label><input type="radio" name="system" value="inch"><span>Imperial</span></label>
+        <label><input type="radio" name="system" value="both"><span>Both</span></label>
+      </div>
+      <div class="seg" role="radiogroup" aria-label="Series">
+        <label><input type="radio" name="series" value="all" checked><span>All</span></label>
+        <label><input type="radio" name="series" value="coarse"><span>Coarse</span></label>
+        <label><input type="radio" name="series" value="fine"><span>Fine</span></label>
+      </div>
+      <button id="rare" type="button" aria-pressed="false">Show rare sizes</button>
+      <div class="seg-group">
+        <span class="seg-label" id="units-label">Units</span>
+        <div class="seg" role="radiogroup" aria-labelledby="units-label">
+          <label><input type="radio" name="units" value="native" checked><span>Native</span></label>
+          <label><input type="radio" name="units" value="mm"><span>All mm</span></label>
+          <label><input type="radio" name="units" value="in"><span>All inch</span></label>
+        </div>
+      </div>
     </div>
     <div class="actions">
       <span id="count" aria-live="polite">0 selected</span>
@@ -30,10 +46,10 @@
         <tr>
           <th><span class="sr">Select</span></th>
           <th>Thread</th>
-          <th class="num">Pitch (mm)</th>
-          <th class="num">Outer Ø (mm)</th>
-          <th class="num">Inner Ø, bolt (mm)</th>
-          <th class="num">Inner Ø, nut (mm)</th>
+          <th class="num">Pitch</th>
+          <th class="num">Outer Ø</th>
+          <th class="num">Inner Ø, bolt</th>
+          <th class="num">Inner Ø, nut</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -43,7 +59,10 @@
   <p class="notes">
     Outer Ø is the nominal (major) diameter. Inner Ø, bolt is the external thread minor diameter
     d<sub>3</sub> = d − 1.22687·P. Inner Ø, nut is the internal thread minor diameter
-    D<sub>1</sub> = d − 1.08253·P. Values are calculated from the basic ISO 68-1 profile and rounded to 3 decimals.
+    D<sub>1</sub> = d − 1.08253·P. Metric and Unified threads share the same 60° basic profile, so both use
+    these formulas (P = 1/TPI for inch threads). Values are rounded to 3 decimals in mm and 4 decimals in inches.
+    Coarse = UNC and fine = UNF for inch threads. <strong>Native</strong> units show metric threads in mm and
+    inch threads in inches/TPI.
   </p>
 </main>
 <script src="data.js"></script>
