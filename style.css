@@ -1,10 +1,12 @@
 :root {
   --bg: #eef0f2; --panel: #fff; --ink: #1d242b; --muted: #5d6a75;
   --line: #d3d9de; --accent: #0b6e8a; --accent-ink: #fff; --sel: #dff0f5;
+  --bad: #b42318; --bad-bg: #fde4e1;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #14191d; --panel: #1c2329; --ink: #e6ebef; --muted: #98a5b0;
-          --line: #2d3740; --accent: #4cc0dd; --accent-ink: #08222b; --sel: #1d3a45; }
+          --line: #2d3740; --accent: #4cc0dd; --accent-ink: #08222b; --sel: #1d3a45;
+          --bad: #ff8a7a; --bad-bg: #4a1f1b; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink);
@@ -46,6 +48,13 @@ tbody tr { cursor: pointer; }
 tbody tr:hover { background: color-mix(in srgb, var(--sel) 50%, transparent); }
 tbody tr.selected { background: var(--sel); }
 tbody tr:last-child > * { border-bottom: 0; }
+thead th.group { text-align: center; color: var(--ink); border-bottom: 1px solid var(--line); }
+thead tr:first-child th[rowspan] { vertical-align: bottom; }
+tbody tr.retap-bad { background: var(--bad-bg); color: var(--bad); }
+tbody tr.retap-bad td:nth-child(6) { font-weight: 700; }
+tbody tr.retap-base { box-shadow: inset 4px 0 0 var(--accent); }
+.retap-info { margin: -.25rem 0 1rem; font-size: .9rem; color: var(--muted); }
+.retap-info .u { min-width: 0; }
 input[type=checkbox] { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
 [hidden] { display: none !important; }
 .sr { position: absolute; left: -9999px; }

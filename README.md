@@ -5,6 +5,7 @@ A static GitHub Pages site listing ISO metric threads (coarse and fine) and Unif
 - **Metric / Imperial / Both** picks which thread system is listed (metric by default).
 - **Show rare sizes** adds the less common sizes; by default only common ones are listed.
 - **Units: Native / All mm / All inch** shows each thread in its own units, or converts everything to one system.
+- **Re-tap check** treats the smallest selected thread as an existing tapped hole and highlights in red every thread that can't be cleanly tapped over it (its nut peak Ø is smaller than the hole's nut valley Ø).
 - Tick rows and press **Compare selected** to hide everything else; press **Show all again** to restore the full table.
 
 ## Publish
@@ -26,5 +27,5 @@ Add rows to `data.js`:
 
 Inner diameters are computed in `app.js` (inch threads use P = 25.4 / TPI mm):
 
-- bolt minor diameter d3 = d − 1.22687·P
-- nut minor diameter D1 = d − 1.08253·P
+- bolt peak Ø = d, bolt valley Ø d3 = d − 1.22687·P
+- nut peak Ø D1 = d − 1.08253·P, nut valley Ø D = d

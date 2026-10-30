@@ -24,6 +24,7 @@
         <label><input type="radio" name="series" value="fine"><span>Fine</span></label>
       </div>
       <button id="rare" type="button" aria-pressed="false">Show rare sizes</button>
+      <button id="retap" type="button" aria-pressed="false">Re-tap check</button>
       <div class="seg-group">
         <span class="seg-label" id="units-label">Units</span>
         <div class="seg" role="radiogroup" aria-labelledby="units-label">
@@ -39,17 +40,23 @@
       <button id="compare" type="button" class="primary" disabled>Compare selected</button>
     </div>
   </div>
+  <p id="retap-info" class="retap-info" aria-live="polite" hidden></p>
 
   <div class="table-wrap">
     <table id="threads">
       <thead>
         <tr>
-          <th><span class="sr">Select</span></th>
-          <th>Thread</th>
-          <th class="num">Pitch</th>
-          <th class="num">Outer Ø</th>
-          <th class="num">Inner Ø, bolt</th>
-          <th class="num">Inner Ø, nut</th>
+          <th rowspan="2"><span class="sr">Select</span></th>
+          <th rowspan="2">Thread</th>
+          <th rowspan="2" class="num">Pitch</th>
+          <th colspan="2" class="group">Bolt Ø</th>
+          <th colspan="2" class="group">Nut Ø</th>
+        </tr>
+        <tr>
+          <th class="num" title="Bolt outer diameter, at the thread peaks (d)">Peak</th>
+          <th class="num" title="Bolt core diameter, at the thread valleys (d₃)">Valley</th>
+          <th class="num" title="Nut bore diameter, at the thread peaks (D₁) — roughly the tap drill size">Peak</th>
+          <th class="num" title="Nut outer diameter, at the thread valleys (D)">Valley</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -57,12 +64,17 @@
   </div>
 
   <p class="notes">
-    Outer Ø is the nominal (major) diameter. Inner Ø, bolt is the external thread minor diameter
-    d<sub>3</sub> = d − 1.22687·P. Inner Ø, nut is the internal thread minor diameter
-    D<sub>1</sub> = d − 1.08253·P. Metric and Unified threads share the same 60° basic profile, so both use
+    Peak Ø is measured across the tips of the thread, valley Ø across the bottoms of the grooves.
+    Bolt peak = nominal size d; bolt valley d<sub>3</sub> = d − 1.22687·P.
+    Nut peak D<sub>1</sub> = d − 1.08253·P (the bore, close to the tap drill size); nut valley D = d. Metric and Unified threads share the same 60° basic profile, so both use
     these formulas (P = 1/TPI for inch threads). Values are rounded to 3 decimals in mm and 4 decimals in inches.
     Coarse = UNC and fine = UNF for inch threads. <strong>Native</strong> units show metric threads in mm and
     inch threads in inches/TPI.
+  </p>
+  <p class="notes">
+    <strong>Re-tap check</strong> takes the smallest selected thread as an existing tapped hole and marks in red
+    every thread that can't be cleanly tapped over it: its nut peak Ø (the new bore) is smaller than the existing
+    hole's nut valley Ø, so the old grooves would stay in the new thread.
   </p>
 </main>
 <script src="data.js"></script>
