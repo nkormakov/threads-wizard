@@ -7,6 +7,11 @@
   const retapBtn = document.getElementById("retap");
   const retapInfo = document.getElementById("retap-info");
   const countEl = document.getElementById("count");
+  const toolbar = document.querySelector(".toolbar");
+  // The table header sticks right below the (variable-height) sticky toolbar.
+  new ResizeObserver(() =>
+    document.documentElement.style.setProperty("--toolbar-h", `${toolbar.offsetHeight}px`)
+  ).observe(toolbar);
   const round = (n, places) => (Math.round(n * 10 ** places) / 10 ** places).toString();
   const unit = (value, u) => `${value}<span class="u">${u}</span>`;
 
