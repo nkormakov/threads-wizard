@@ -61,7 +61,6 @@ thead tr:first-child th:nth-child(n+3), thead tr:last-child th:nth-child(odd) {
   border-left-color: var(--line-strong); }
 @media (max-width: 720px) { .table-wrap { overflow-x: auto; } }
 tbody tr.retap-bad { background: var(--bad-bg); color: var(--bad); }
-tbody tr.retap-bad td:nth-child(6) { font-weight: 700; }
 tbody tr.retap-base { box-shadow: inset 4px 0 0 var(--accent); }
 .retap-info { margin: -.25rem 0 1rem; font-size: .9rem; color: var(--muted); }
 .retap-info .u { min-width: 0; }
